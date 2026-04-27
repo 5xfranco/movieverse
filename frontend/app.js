@@ -1,7 +1,16 @@
 const API_BASE = "http://localhost:3000/api";
 
 /* ------------------------------------------------------ */
-/* CARD TEMPLATE (Hulu Style) */
+/* PARALLAX HERO BANNER */
+/* ------------------------------------------------------ */
+window.addEventListener("scroll", () => {
+  const offset = window.scrollY * 0.3;
+  const bg = document.getElementById("heroBannerBg");
+  if (bg) bg.style.transform = `translateY(${offset}px)`;
+});
+
+/* ------------------------------------------------------ */
+/* SCROLL ARROWS */
 /* ------------------------------------------------------ */
 function scrollRow(id, amount) {
   document.getElementById(id).scrollBy({
@@ -10,11 +19,44 @@ function scrollRow(id, amount) {
   });
 }
 
-function createCard(movie) {
+/* ------------------------------------------------------ */
+/* RANDOM HERO BANNER */
+/* ------------------------------------------------------ */
+async function loadRandomHero() {
+  try {
+    const res = await fetch(`${API_BASE}/movies/trending`);
+    const movies = await res.json();
+
+    const random = movies[Math.floor(Math.random() * movies.length)];
+
+    document.getElementById("heroBannerBg").style.backgroundImage =
+      `url(${random.poster})`;
+
+    document.getElementById("heroBannerTitle").textContent = random.title;
+    document.getElementById("heroBannerDesc").textContent =
+      `${random.year} • ⭐ ${random.rating}`;
+  } catch (err) {
+    console.error("Error loading hero banner:", err);
+  }
+}
+
+loadRandomHero();
+
+/* ------------------------------------------------------ */
+/* CARD TEMPLATE (UPGRADED) */
+/* ------------------------------------------------------ */
+let topRatedData = []; // MUST be above createCard()
+
+function createCard(movie, index, arr) {
+  const isTopRated = arr === topRatedData;
+  const isSpotlight = isTopRated && index === 0;
+
   return `
-    <div class="card" onclick="goToDetails('${movie.id}')">
+    <div class="card ${isSpotlight ? "spotlight-card" : ""}" onclick="goToDetails('${movie.id}')">
       <div class="card-poster-wrap">
         <img src="${movie.poster}" alt="${movie.title}">
+        <div class="rating-badge">⭐ ${movie.rating}</div>
+        <div class="hover-gradient"></div>
       </div>
 
       <div class="card-info">
@@ -30,23 +72,37 @@ function goToDetails(id) {
 }
 
 /* ------------------------------------------------------ */
-/* LOAD ROWS (Trending, Popular, Top Rated) */
+/* LOAD ROWS (Trending, Popular) */
 /* ------------------------------------------------------ */
 async function loadRow(endpoint, elementId) {
   try {
     const res = await fetch(`${API_BASE}/movies/${endpoint}`);
     const data = await res.json();
 
-    document.getElementById(elementId).innerHTML = data
-      .map(createCard)
-      .join("");
+    document.getElementById(elementId).innerHTML =
+      data.map((m, i, arr) => createCard(m, i, arr)).join("");
   } catch (err) {
     console.error(`Error loading ${endpoint}:`, err);
   }
 }
 
 /* ------------------------------------------------------ */
-/* SEARCH SYSTEM (Hulu Style Suggestions) */
+/* TOP RATED — SPECIAL LOADER */
+/* ------------------------------------------------------ */
+async function loadTopRated() {
+  try {
+    const res = await fetch(`${API_BASE}/movies/top`);
+    topRatedData = await res.json();
+
+    document.getElementById("topRatedRow").innerHTML =
+      topRatedData.map((m, i) => createCard(m, i, topRatedData)).join("");
+  } catch (err) {
+    console.error("Error loading Top Rated:", err);
+  }
+}
+
+/* ------------------------------------------------------ */
+/* SEARCH SYSTEM */
 /* ------------------------------------------------------ */
 const searchInput = document.getElementById("searchInput");
 const searchBtn = document.getElementById("searchBtn");
@@ -59,28 +115,29 @@ async function showSuggestions() {
     return;
   }
 
-  const res = await fetch(`${API_BASE}/movies/search?q=${q}`);
-  const data = await res.json();
+  try {
+    const res = await fetch(`${API_BASE}/movies/search?q=${q}`);
+    const data = await res.json();
 
-  suggestions.innerHTML = data
-    .slice(0, 6)
-    .map(
-      m => `
-      <div class="suggestion-item" onclick="goToDetails('${m.id}')">
-        ${m.title} (${m.year || "N/A"})
-      </div>
-    `
-    )
-    .join("");
+    suggestions.innerHTML = data
+      .slice(0, 6)
+      .map(
+        m => `
+        <div class="suggestion-item" onclick="goToDetails('${m.id}')">
+          ${m.title} (${m.year || "N/A"})
+        </div>
+      `
+      )
+      .join("");
 
-  suggestions.style.display = "block";
+    suggestions.style.display = "block";
+  } catch (err) {
+    console.error("Search error:", err);
+  }
 }
 
 searchInput.addEventListener("input", showSuggestions);
-
-searchBtn.addEventListener("click", () => {
-  showSuggestions();
-});
+searchBtn.addEventListener("click", showSuggestions);
 
 /* ------------------------------------------------------ */
 /* FAVORITES SYSTEM */
@@ -113,4 +170,4 @@ function toggleFavorite(event, id, title, poster) {
 /* ------------------------------------------------------ */
 loadRow("trending", "trendingRow");
 loadRow("popular", "popularRow");
-loadRow("toprated", "topRatedRow");
+loadTopRated();

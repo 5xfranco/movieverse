@@ -339,3 +339,192 @@ body {
 .card:hover .card-poster-wrap::after {
   opacity: 1;
 }
+
+/* SECTION TITLE — STICKY */
+.results-section {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  position: sticky;
+  left: 0;
+  z-index: 5;
+  padding: 6px 0;
+  background: #0d1422;
+}
+
+/* CARD TILT EFFECT */
+.card {
+  transform-style: preserve-3d;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: perspective(600px) rotateY(8deg) scale(1.05);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* GLASS OVERLAY */
+.glass {
+  background: rgba(13, 20, 34, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* RANDOM HERO BANNER */
+.hero-banner {
+  width: 100%;
+  height: 360px;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.hero-banner-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.55);
+  transition: background-image 0.6s ease;
+}
+
+.hero-banner-content {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+}
+
+.hero-banner-content h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+.hero-banner-content p {
+  font-size: 1.1rem;
+  color: #b8c0d8;
+}
+
+/* CATEGORY GRID */
+.category-grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.category-card {
+  padding: 16px 22px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: 0.2s ease;
+}
+
+.category-card:hover {
+  background: rgba(255,255,255,0.18);
+  transform: scale(1.05);
+}
+
+.hero-banner-bg {
+  transform: translateY(0px);
+  transition: transform 0.2s ease-out;
+}
+/* DROPDOWN MENU */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-toggle {
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 28px;
+  left: 0;
+  background: rgba(13, 20, 34, 0.95);
+  backdrop-filter: blur(12px);
+  padding: 10px 0;
+  border-radius: 6px;
+  display: none;
+  flex-direction: column;
+  min-width: 180px;
+  z-index: 20;
+}
+
+.dropdown-menu a {
+  padding: 10px 16px;
+  display: block;
+  color: #f5f7ff;
+  transition: 0.2s ease;
+}
+
+.dropdown-menu a:hover {
+  background: rgba(255,255,255,0.08);
+  color: #00ffb3;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: flex;
+}
+
+/* NAVBAR LINK HOVER ANIMATION */
+.nav-links a {
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0%;
+  height: 2px;
+  background: #00ffb3;
+  transition: width 0.25s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
+}
+
+/* TOP RATED SPOTLIGHT */
+.top-rated-grid .card:first-child {
+  min-width: 260px;
+  max-width: 260px;
+  transform: scale(1.02);
+}
+
+.top-rated-grid .card:first-child img {
+  object-fit: cover;
+}
+
+.top-rated-grid .card:first-child:hover {
+  transform: scale(1.06);
+}
+/* GOLD TITLE FOR TOP RATED */
+.section-title.top-rated-title {
+  background: linear-gradient(to right, #ffd700, #ffb300);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+/* RATING BADGE */
+.rating-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(0,0,0,0.65);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  color: #ffd700;
+  font-weight: 600;
+  backdrop-filter: blur(4px);
+}

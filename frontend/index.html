@@ -9,16 +9,40 @@
 <body>
 
   <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="logo">MovieVerse</div>
+  <nav class="navbar glass">
+  <div class="logo">MovieVerse</div>
 
-    <div class="nav-links">
-      <a href="index.html" class="active">Home</a>
-      <a href="favorites.html">Favorites</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+
+    <div class="dropdown">
+      <a href="categories.html" class="dropdown-toggle">Categories ▾</a>
+
+      <div class="dropdown-menu">
+        <a href="categories.html?cat=action">🔥 Action</a>
+        <a href="categories.html?cat=comedy">😂 Comedy</a>
+        <a href="categories.html?cat=horror">😱 Horror</a>
+        <a href="categories.html?cat=romance">❤️ Romance</a>
+        <a href="categories.html?cat=scifi">🚀 Sci‑Fi</a>
+      </div>
     </div>
-  </nav>
+
+    <a href="favorites.html">Favorites</a>
+  </div>
+</nav>
+
+
 
   <div class="app">
+    
+   <section class="hero-banner">
+  <div class="hero-banner-bg" id="heroBannerBg"></div>
+  <div class="hero-banner-content">
+    <h1 id="heroBannerTitle">Loading…</h1>
+    <p id="heroBannerDesc"></p>
+  </div>
+</section>
+
 
     <!-- HERO + SEARCH -->
     <section class="hero">
@@ -53,8 +77,8 @@
     </section>
 
     <section class="results-section">
-      <h2 class="section-title">Top Rated</h2>
-      <div class="card-grid" id="topRatedRow"></div>
+      <h2 class="section-title top-rated-title">Top Rated</h2>
+      <div class="card-grid top-rated-grid" id="topRatedRow"></div>
       <button class="scroll-btn left" onclick="scrollRow('trendingRow', -400)">‹</button>
 <button class="scroll-btn right" onclick="scrollRow('trendingRow', 400)">›</button>
 

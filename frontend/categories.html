@@ -1,104 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Categories</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
 <body>
+
+  <nav class="navbar glass">
+  <div class="logo">MovieVerse</div>
+
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="categories.html" class="active">Categories</a>
+    <a href="favorites.html">Favorites</a>
+  </div>
+</nav>
+
   <div class="app">
-    <!-- NAVBAR -->
-    <header class="navbar">
-      <div class="logo">MovieVerse</div>
-      <nav class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="categories.html" class="active">Categories</a>
-        <a href="favorites.html">Favorites</a>
-      </nav>
-    </header>
 
-    <main class="categories-page">
+    <h1 class="section-title">Categories</h1>
 
-      <!-- HERO BANNER -->
-      <section class="category-hero">
-        <div class="category-hero-bg"></div>
-        <div class="category-hero-content">
-          <h1>Browse by Category</h1>
-          <p>Explore movies by mood, genre, and style.</p>
-        </div>
-      </section>
+    <section class="categories-grid">
+  <div class="category-card" onclick="openCategory('action')">
+    <div class="cat-bg" style="background-image:url('images/cat-action.jpg')"></div>
+    <div class="cat-label">🔥 Action</div>
+  </div>
 
-      <!-- CATEGORY GRID -->
-      <div class="category-grid">
+  <div class="category-card" onclick="openCategory('comedy')">
+    <div class="cat-bg" style="background-image:url('images/cat-comedy.jpg')"></div>
+    <div class="cat-label">😂 Comedy</div>
+  </div>
 
-        <div class="category-card" 
-             style="background-image:url('https://i.imgur.com/8Q1ZqVx.jpeg')" 
-             onclick="openCategory('action')">
-          🎬 Action
-        </div>
+  <div class="category-card" onclick="openCategory('horror')">
+    <div class="cat-bg" style="background-image:url('images/cat-horror.jpg')"></div>
+    <div class="cat-label">😱 Horror</div>
+  </div>
 
-        <div class="category-card" 
-             style="background-image:url('https://i.imgur.com/0zQFq8X.jpeg')" 
-             onclick="openCategory('comedy')">
-          😂 Comedy
-        </div>
+  <div class="category-card" onclick="openCategory('romance')">
+    <div class="cat-bg" style="background-image:url('images/cat-romance.jpg')"></div>
+    <div class="cat-label">❤️ Romance</div>
+  </div>
 
-        <div class="category-card" 
-             style="background-image:url('https://i.imgur.com/8kVYQxC.jpeg')" 
-             onclick="openCategory('horror')">
-          😱 Horror
-        </div>
+  <div class="category-card" onclick="openCategory('scifi')">
+    <div class="cat-bg" style="background-image:url('images/cat-scifi.jpg')"></div>
+    <div class="cat-label">🚀 Sci‑Fi</div>
+  </div>
+</section>
 
-        <div class="category-card" 
-             style="background-image:url('https://i.imgur.com/2u0p4mB.jpeg')" 
-             onclick="openCategory('sci-fi')">
-          🚀 Sci‑Fi
-        </div>
 
-        <div class="category-card" 
-             style="background-image:url('https://i.imgur.com/6u6xZ8w.jpeg')" 
-             onclick="openCategory('romance')">
-          ❤️ Romance
-        </div>
+    <div id="categoryResults"></div>
 
-        <div class="category-card" 
-             style="background-image:url('https://i.imgur.com/4p0e3tM.jpeg')" 
-             onclick="openCategory('animation')">
-          🎨 Animation
-        </div>
-
-        <div class="category-card" 
-             style="background-image:url('https://i.imgur.com/9z0uY8Q.jpeg')" 
-             onclick="openCategory('thriller')">
-          🔪 Thriller
-        </div>
-
-        <div class="category-card" 
-             style="background-image:url('https://i.imgur.com/7x0gkQw.jpeg')" 
-             onclick="openCategory('adventure')">
-          🗺️ Adventure
-        </div>
-
-        <div class="category-card" 
-             style="background-image:url('https://i.imgur.com/5t0gkQw.jpeg')" 
-             onclick="openCategory('drama')">
-          🎭 Drama
-        </div>
-
-      </div>
-
-      <!-- SUBCATEGORIES (Example for Action) -->
-      <h2 class="section-title">Action Subcategories</h2>
-      <div class="subcategory-row">
-        <button onclick="openCategory('superhero')">Superhero</button>
-        <button onclick="openCategory('war')">War</button>
-        <button onclick="openCategory('crime')">Crime</button>
-      </div>
-
-      <!-- CAROUSEL EXAMPLE -->
-      <h2 class="section-title">Popular in Action</h2>
-      <div class="carousel" id="carousel-action"></div>
-
-      <!-- RESULTS -->
-      <h2 class="section-title">Results</h2>
-      <div id="spinner" class="spinner"></div>
-      <div id="results" class="card-grid"></div>
-
-    </main>
   </div>
 
   <script src="categories.js"></script>
 </body>
+</html>
