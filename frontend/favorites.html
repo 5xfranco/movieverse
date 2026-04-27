@@ -1,19 +1,28 @@
-<body>
-  <div class="app">
-    <header class="navbar">
-      <div class="logo">MovieVerse</div>
-      <nav class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="categories.html">Categories</a>
-        <a href="favorites.html" class="active">Favorites</a>
-      </nav>
-    </header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Favorites</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
 
-    <main>
-      <h1>Your Favorites ❤️</h1>
-      <div id="favoritesList" class="card-grid"></div>
-    </main>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">MovieVerse</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="favorites.html" class="active">Favorites</a>
+    </div>
+  </nav>
+
+  <div class="app">
+    <h1 class="section-title">Your Favorites</h1>
+
+    <div id="favoritesGrid"></div>
+    <p id="emptyMessage" style="display:none;">No favorites yet.</p>
   </div>
 
   <script src="favorites.js"></script>
 </body>
+</html>

@@ -1,30 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Movie Details</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-<body>
-  <div class="app">
-    <header class="navbar">
-      <div class="logo">MovieVerse</div>
-      <nav class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="favorites.html">Favorites</a>
-      </nav>
-    </header>
-    <button class="back-btn" onclick="goHome()">← Home</button>
 
+<body>
 
-    <main id="detailsRoot" class="details-page">
-      <!-- Filled by JS -->
-    </main>
-  </div>
+  <nav class="navbar">
+    <div class="logo">MovieVerse</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="favorites.html">Favorites</a>
+    </div>
+  </nav>
+
+  <button class="back-btn" onclick="history.back()">← Back</button>
+
+  <section class="details-hero">
+    <div class="details-bg" id="detailsBg"></div>
+  </section>
+
+  <section class="details-content">
+    <div class="details-poster">
+      <img id="detailsPoster" src="">
+    </div>
+
+    <div class="details-text">
+      <h1 id="detailsTitle"></h1>
+      <div class="details-meta" id="detailsMeta"></div>
+      <div class="details-plot" id="detailsPlot"></div>
+
+      <button class="fav-details-btn" id="favBtn">Add to Favorites</button>
+    </div>
+  </section>
 
   <script src="details.js"></script>
-</body>
-
 </body>
 </html>

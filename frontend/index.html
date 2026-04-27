@@ -1,65 +1,67 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>MovieVerse</title>
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-  <div class="logo">MovieVerse</div>
-      <nav class="nav-links">
-        <a href="index.html" class="active">Home</a>
-        <a href="favorites.html">Favorites</a>
-        <button class="dark-toggle" onclick="toggleDarkMode()">🌙</button>
 
-      </nav>
-    </div>   
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">MovieVerse</div>
+
+    <div class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="favorites.html">Favorites</a>
+    </div>
+  </nav>
+
   <div class="app">
-    <header class="navbar">
-    <header class="navbar glass">
-  </header>
-  </div>
-    
-</header>
 
-    <main>
-      <section class="hero-carousel">
-  <div class="carousel-track" id="heroCarousel"></div>
-</section>
+    <!-- HERO + SEARCH -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Discover your next favorite movie</h1>
+        <p>Search across thousands of titles powered by TMDB.</p>
+      </div>
 
-      <section class="hero">
-        <div class="hero-content">
-          <h1>Discover your next favorite movie.</h1>
-          <p>Search across thousands of titles powered by OMDb.</p>
-          <div class="search-bar">
-            <input
-              id="searchInput"
-              type="text"
-              placeholder="Search for a movie..."
-              onkeydown="if(event.key==='Enter') searchMovies()"
-            />
-            <button onclick="searchMovies()">Search</button>
-          </div>
-          <div id="suggestions" class="suggestions"></div>
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search for a movie...">
+        <button id="searchBtn">Search</button>
+      </div>
 
-        </div>
-      </section>
+      <div id="suggestions" class="suggestions"></div>
+    </section>
 
-      <section class="results-section">
-        <h2 class="section-title">Results</h2>
-        <div id="spinner" class="spinner"></div>
-        <div id="results" class="card-grid"></div>
-        <h2 class="section-title">Trending Now</h2>
-<div class="carousel" id="trendingRow"></div>
+    <!-- ROWS -->
+    <section class="results-section">
+      <h2 class="section-title">Trending Now</h2>
+      <div class="card-grid" id="trendingRow"></div>
+      <button class="scroll-btn left" onclick="scrollRow('trendingRow', -400)">‹</button>
+<button class="scroll-btn right" onclick="scrollRow('trendingRow', 400)">›</button>
 
-<h2 class="section-title">Top Rated</h2>
-<div class="carousel" id="topRatedRow"></div>
+    </section>
 
-      </section>
-    </main>
+    <section class="results-section">
+      <h2 class="section-title">Popular</h2>
+      <div class="card-grid" id="popularRow"></div>
+      <button class="scroll-btn left" onclick="scrollRow('trendingRow', -400)">‹</button>
+<button class="scroll-btn right" onclick="scrollRow('trendingRow', 400)">›</button>
+
+    </section>
+
+    <section class="results-section">
+      <h2 class="section-title">Top Rated</h2>
+      <div class="card-grid" id="topRatedRow"></div>
+      <button class="scroll-btn left" onclick="scrollRow('trendingRow', -400)">‹</button>
+<button class="scroll-btn right" onclick="scrollRow('trendingRow', 400)">›</button>
+
+    </section>
+
   </div>
 
   <script src="app.js"></script>
 </body>
-
 </html>
