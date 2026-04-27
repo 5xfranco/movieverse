@@ -1,0 +1,367 @@
+/* ------------------------------------------------------ */
+/* RESET */
+/* ------------------------------------------------------ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #1b2b4b 0, #050814 55%, #02030a 100%);
+  color: #f5f7ff;
+  display: flex;
+  justify-content: center;
+}
+
+/* ------------------------------------------------------ */
+/* NAVBAR — STICKY AT TOP */
+/* ------------------------------------------------------ */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+
+  width: 100%;
+  max-width: 1300px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 16px 28px;
+  margin: 0 auto 40px auto;
+
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.nav-links a {
+  color: #c7d0ff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 0.95rem;
+  position: relative;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #4da3ff, #9b6bff);
+  border-radius: 999px;
+}
+
+/* ------------------------------------------------------ */
+/* MAIN APP CONTAINER */
+/* ------------------------------------------------------ */
+.app {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 40px 40px 80px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* THIS is the missing piece */
+}
+
+
+/* ------------------------------------------------------ */
+/* HERO SECTION — CENTERED */
+/* ------------------------------------------------------ */
+.hero {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 60px 0 40px;
+}
+
+
+.hero-content {
+  max-width: 650px;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: 2.6rem;
+  margin-bottom: 16px;
+}
+
+.hero p {
+  color: #c0c7e8;
+  margin-bottom: 24px;
+}
+
+/* ------------------------------------------------------ */
+/* HERO CAROUSEL — OPTIONAL */
+/* ------------------------------------------------------ */
+.hero-carousel {
+  display: none; /* Hide until you add real TMDB images */
+}
+
+/* ------------------------------------------------------ */
+/* SEARCH BAR — CENTERED */
+/* ------------------------------------------------------ */
+.search-bar {
+  margin: 0 auto 40px auto;
+  max-width: 600px;
+  width: 100%;
+}
+
+
+.search-bar input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #f5f7ff;
+  padding: 12px 16px;
+  font-size: 1rem;
+}
+
+.search-bar button {
+  background: linear-gradient(135deg, #4da3ff, #9b6bff);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* SEARCH SUGGESTIONS */
+.suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: rgba(10,15,40,0.95);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 12px;
+  display: none;
+  z-index: 50;
+}
+
+.suggestion-item {
+  padding: 12px 16px;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+/* ------------------------------------------------------ */
+/* RESULTS SECTION */
+/* ------------------------------------------------------ */
+.results-section {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto 40px auto;
+}
+
+.section-title {
+  font-size: 1.3rem;
+  margin-bottom: 16px;
+}
+
+/* ------------------------------------------------------ */
+/* HORIZONTAL MOVIE ROWS (NETFLIX STYLE) */
+/* ------------------------------------------------------ */
+.card-grid {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 10px 0 20px;
+  scroll-snap-type: x mandatory;
+}
+
+
+.card-grid::-webkit-scrollbar {
+  height: 6px;
+}
+
+.card-grid::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.2);
+  border-radius: 10px;
+}
+
+/* ------------------------------------------------------ */
+/* MOVIE CARD */
+/* ------------------------------------------------------ */
+.card {
+  min-width: 180px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid rgba(120,150,255,0.18);
+  transition: 0.25s ease;
+  scroll-snap-align: start;
+}
+
+.card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+}
+
+.card-poster-wrap {
+  width: 100%;
+  aspect-ratio: 2/3;
+  overflow: hidden;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.25s ease;
+}
+
+.card:hover img {
+  transform: scale(1.08);
+}
+
+.card-info {
+  padding: 14px 16px 18px;
+}
+
+.card-info h3 {
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+
+.card-info p {
+  font-size: 0.85rem;
+  color: #9aa3d0;
+}
+
+.card-badges {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.rating-badge {
+  background: rgba(255,255,255,0.15);
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+}
+
+.fav-btn {
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+/* ------------------------------------------------------ */
+/* DETAILS PAGE */
+/* ------------------------------------------------------ */
+.details-hero {
+  width: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+  min-height: 340px;
+  margin-bottom: 48px;
+  position: relative;
+}
+
+.details-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(18px) brightness(0.4);
+  transform: scale(1.1);
+}
+
+.details-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left, rgba(77,163,255,0.35), transparent 55%),
+              radial-gradient(circle at bottom right, rgba(155,107,255,0.35), transparent 55%);
+  mix-blend-mode: screen;
+}
+
+.details-content {
+  position: relative;
+  display: flex;
+  gap: 40px;
+  padding: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.details-poster img {
+  width: 280px;
+  border-radius: 18px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.9);
+}
+
+.details-text h1 {
+  font-size: 2.6rem;
+  margin-bottom: 12px;
+}
+
+.details-meta {
+  color: #c0c7e8;
+  margin-bottom: 12px;
+}
+
+.details-plot {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.fav-details-btn {
+  margin-top: 16px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #ff4d6d, #ff6b81);
+  border: none;
+  border-radius: 999px;
+  color: white;
+  cursor: pointer;
+}
+
+/* ------------------------------------------------------ */
+/* BACK BUTTON */
+/* ------------------------------------------------------ */
+.back-btn {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  z-index: 999;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.25);
+  padding: 10px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+}
