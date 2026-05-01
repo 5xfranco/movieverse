@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:3000/api";
+const API_BASE = "http://10.220.1.76:3000/api";
 
 async function loadDetails() {
   const params = new URLSearchParams(window.location.search);

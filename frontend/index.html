@@ -10,38 +10,47 @@
 
   <!-- NAVBAR -->
   <nav class="navbar glass">
-  <div class="logo">MovieVerse</div>
+    <div class="logo">MovieVerse</div>
 
-  <div class="nav-links">
-    <a href="index.html">Home</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
 
-    <div class="dropdown">
-      <a href="categories.html" class="dropdown-toggle">Categories ▾</a>
+      <div class="dropdown">
+        <a href="categories.html" class="dropdown-toggle">Categories ▾</a>
 
-      <div class="dropdown-menu">
-        <a href="categories.html?cat=action">🔥 Action</a>
-        <a href="categories.html?cat=comedy">😂 Comedy</a>
-        <a href="categories.html?cat=horror">😱 Horror</a>
-        <a href="categories.html?cat=romance">❤️ Romance</a>
-        <a href="categories.html?cat=scifi">🚀 Sci‑Fi</a>
+        <div class="dropdown-menu">
+          <a href="categories.html?cat=action">🔥 Action</a>
+          <a href="categories.html?cat=comedy">😂 Comedy</a>
+          <a href="categories.html?cat=horror">😱 Horror</a>
+          <a href="categories.html?cat=romance">❤️ Romance</a>
+          <a href="categories.html?cat=scifi">🚀 Sci‑Fi</a>
+        </div>
       </div>
-    </div>
 
-    <a href="favorites.html">Favorites</a>
-  </div>
-</nav>
+      <a href="favorites.html">Favorites</a>
+
+      <!-- SEARCH ICON (far right) -->
+      <a href="search.html" class="search-icon-link">
+        <svg class="search-icon" width="22" height="22" viewBox="0 0 24 24" stroke="#f5f7ff" fill="none" stroke-width="2" stroke-linecap="round">
+          <circle cx="11" cy="11" r="7"></circle>
+          <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+        </svg>
+      </a>
+    </div>
+  </nav>
 
 
 
   <div class="app">
     
-   <section class="hero-banner">
-  <div class="hero-banner-bg" id="heroBannerBg"></div>
-  <div class="hero-banner-content">
-    <h1 id="heroBannerTitle">Loading…</h1>
-    <p id="heroBannerDesc"></p>
-  </div>
-</section>
+    <!-- RANDOM HERO BANNER -->
+    <section class="hero-banner">
+      <div class="hero-banner-bg" id="heroBannerBg"></div>
+      <div class="hero-banner-content">
+        <h1 id="heroBannerTitle">Loading…</h1>
+        <p id="heroBannerDesc"></p>
+      </div>
+    </section>
 
 
     <!-- HERO + SEARCH -->
@@ -58,30 +67,34 @@
 
       <div id="suggestions" class="suggestions"></div>
     </section>
+    <!-- RECENT SEARCHES ON HOMEPAGE -->
+
+    <section id="recentSearchSection" style="display:none;">
+  <h2 class="section-title">Recent Searches</h2>
+  <div id="recentSearchChips" class="chips-row"></div>
+</section>
+
 
     <!-- ROWS -->
     <section class="results-section">
       <h2 class="section-title">Trending Now</h2>
       <div class="card-grid" id="trendingRow"></div>
       <button class="scroll-btn left" onclick="scrollRow('trendingRow', -400)">‹</button>
-<button class="scroll-btn right" onclick="scrollRow('trendingRow', 400)">›</button>
-
+      <button class="scroll-btn right" onclick="scrollRow('trendingRow', 400)">›</button>
     </section>
 
     <section class="results-section">
       <h2 class="section-title">Popular</h2>
       <div class="card-grid" id="popularRow"></div>
-      <button class="scroll-btn left" onclick="scrollRow('trendingRow', -400)">‹</button>
-<button class="scroll-btn right" onclick="scrollRow('trendingRow', 400)">›</button>
-
+      <button class="scroll-btn left" onclick="scrollRow('popularRow', -400)">‹</button>
+      <button class="scroll-btn right" onclick="scrollRow('popularRow', 400)">›</button>
     </section>
 
     <section class="results-section">
       <h2 class="section-title top-rated-title">Top Rated</h2>
       <div class="card-grid top-rated-grid" id="topRatedRow"></div>
-      <button class="scroll-btn left" onclick="scrollRow('trendingRow', -400)">‹</button>
-<button class="scroll-btn right" onclick="scrollRow('trendingRow', 400)">›</button>
-
+      <button class="scroll-btn left" onclick="scrollRow('topRatedRow', -400)">‹</button>
+      <button class="scroll-btn right" onclick="scrollRow('topRatedRow', 400)">›</button>
     </section>
 
   </div>

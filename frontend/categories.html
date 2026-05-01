@@ -2,54 +2,76 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Categories</title>
+  <title>Categories • MovieVerse</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
+  <!-- NAVBAR -->
   <nav class="navbar glass">
-  <div class="logo">MovieVerse</div>
+    <div class="logo">MovieVerse</div>
 
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="categories.html" class="active">Categories</a>
-    <a href="favorites.html">Favorites</a>
-  </div>
-</nav>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="categories.html" class="active">Categories</a>
+      <a href="favorites.html">Favorites</a>
+
+      <!-- SEARCH ICON (added) -->
+      <a href="search.html" class="search-icon-link">
+        <svg class="search-icon" width="22" height="22" viewBox="0 0 24 24" stroke="#f5f7ff" fill="none" stroke-width="2" stroke-linecap="round">
+          <circle cx="11" cy="11" r="7"></circle>
+          <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+        </svg>
+      </a>
+    </div>
+  </nav>
+
 
   <div class="app">
 
+    <!-- DYNAMIC ROTATING HERO -->
+    <section id="categoryHero" class="category-hero"></section>
+
+    <!-- CATEGORY TILES -->
     <h1 class="section-title">Categories</h1>
 
     <section class="categories-grid">
-  <div class="category-card" onclick="openCategory('action')">
-    <div class="cat-bg" style="background-image:url('images/cat-action.jpg')"></div>
-    <div class="cat-label">🔥 Action</div>
-  </div>
 
-  <div class="category-card" onclick="openCategory('comedy')">
-    <div class="cat-bg" style="background-image:url('images/cat-comedy.jpg')"></div>
-    <div class="cat-label">😂 Comedy</div>
-  </div>
+      <div class="category-card" onclick="openCategory('action')">
+        <div class="cat-bg" style="background-image:url('images/cat-action.jpg')"></div>
+        <div class="cat-label">🔥 Action</div>
+      </div>
 
-  <div class="category-card" onclick="openCategory('horror')">
-    <div class="cat-bg" style="background-image:url('images/cat-horror.jpg')"></div>
-    <div class="cat-label">😱 Horror</div>
-  </div>
+      <div class="category-card" onclick="openCategory('comedy')">
+        <div class="cat-bg" style="background-image:url('images/cat-comedy.jpg')"></div>
+        <div class="cat-label">😂 Comedy</div>
+      </div>
 
-  <div class="category-card" onclick="openCategory('romance')">
-    <div class="cat-bg" style="background-image:url('images/cat-romance.jpg')"></div>
-    <div class="cat-label">❤️ Romance</div>
-  </div>
+      <div class="category-card" onclick="openCategory('horror')">
+        <div class="cat-bg" style="background-image:url('images/cat-horror.jpg')"></div>
+        <div class="cat-label">😱 Horror</div>
+      </div>
 
-  <div class="category-card" onclick="openCategory('scifi')">
-    <div class="cat-bg" style="background-image:url('images/cat-scifi.jpg')"></div>
-    <div class="cat-label">🚀 Sci‑Fi</div>
-  </div>
-</section>
+      <div class="category-card" onclick="openCategory('romance')">
+        <div class="cat-bg" style="background-image:url('images/cat-romance.jpg')"></div>
+        <div class="cat-label">❤️ Romance</div>
+      </div>
 
+      <div class="category-card" onclick="openCategory('scifi')">
+        <div class="cat-bg" style="background-image:url('images/cat-scifi.jpg')"></div>
+        <div class="cat-label">🚀 Sci‑Fi</div>
+      </div>
 
+    </section>
+
+    <!-- SUBCATEGORIES -->
+    <div id="subcategories"></div>
+
+    <!-- TOP PICKS CAROUSEL -->
+    <section id="topPicksSection"></section>
+
+    <!-- CATEGORY MOVIES -->
     <div id="categoryResults"></div>
 
   </div>

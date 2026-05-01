@@ -2,41 +2,76 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Movie Details</title>
+  <title>Movie Details • MovieVerse</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
+  <!-- NAVBAR -->
   <nav class="navbar glass">
-  <div class="logo">MovieVerse</div>
+    <div class="logo">MovieVerse</div>
 
-  <div class="nav-links">
-    <a href="index.html" class="active">Home</a>
-    <a href="categories.html">Categories</a>
-    <a href="favorites.html">Favorites</a>
+    <div class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="categories.html">Categories</a>
+      <a href="favorites.html">Favorites</a>
+
+      <!-- SEARCH ICON (added) -->
+      <a href="search.html" class="search-icon-link">
+        <svg class="search-icon" width="22" height="22" viewBox="0 0 24 24"
+             stroke="#f5f7ff" fill="none" stroke-width="2" stroke-linecap="round">
+          <circle cx="11" cy="11" r="7"></circle>
+          <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+        </svg>
+      </a>
+    </div>
+  </nav>
+
+
+  <div class="app">
+
+    <!-- SMART BACK TO SEARCH BUTTON -->
+    <button id="backToSearchBtn" class="back-btn" style="display:none;" onclick="goBackToSearch()">
+      ← Back to Search
+    </button>
+
+    <!-- DETAILS HERO -->
+    <section class="details-hero">
+      <div class="details-bg" id="detailsBg"></div>
+    </section>
+
+    <!-- DETAILS CONTENT -->
+    <section class="details-content">
+      <div class="details-poster">
+        <img id="detailsPoster" src="">
+      </div>
+
+      <div class="details-text">
+        <h1 id="detailsTitle"></h1>
+        <div class="details-meta" id="detailsMeta"></div>
+        <div class="details-plot" id="detailsPlot"></div>
+
+        <button class="fav-details-btn" id="favBtn">Add to Favorites</button>
+      </div>
+    </section>
+
   </div>
-</nav>
 
-  <button class="back-btn" onclick="history.back()">← Back</button>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const fromSearch = params.get("from") === "search";
 
-  <section class="details-hero">
-    <div class="details-bg" id="detailsBg"></div>
-  </section>
+    /* Show Back to Search button only when coming from search page */
+    if (fromSearch) {
+      document.getElementById("backToSearchBtn").style.display = "inline-block";
+    }
 
-  <section class="details-content">
-    <div class="details-poster">
-      <img id="detailsPoster" src="">
-    </div>
-
-    <div class="details-text">
-      <h1 id="detailsTitle"></h1>
-      <div class="details-meta" id="detailsMeta"></div>
-      <div class="details-plot" id="detailsPlot"></div>
-
-      <button class="fav-details-btn" id="favBtn">Add to Favorites</button>
-    </div>
-  </section>
+    function goBackToSearch() {
+      const q = params.get("q") || "";
+      window.location.href = "search.html?q=" + encodeURIComponent(q);
+    }
+  </script>
 
   <script src="details.js"></script>
 </body>

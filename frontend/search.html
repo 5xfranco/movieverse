@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Search • MovieVerse</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar glass">
+    <div class="logo">MovieVerse</div>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+
+      <div class="dropdown">
+        <a href="categories.html" class="dropdown-toggle">Categories ▾</a>
+
+        <div class="dropdown-menu">
+          <a href="categories.html?cat=action">🔥 Action</a>
+          <a href="categories.html?cat=comedy">😂 Comedy</a>
+          <a href="categories.html?cat=horror">😱 Horror</a>
+          <a href="categories.html?cat=romance">❤️ Romance</a>
+          <a href="categories.html?cat=scifi">🚀 Sci‑Fi</a>
+        </div>
+      </div>
+
+      <a href="favorites.html">Favorites</a>
+
+      <!-- SEARCH ICON -->
+      <a href="search.html" class="search-icon-link">
+        <svg class="search-icon" width="22" height="22" viewBox="0 0 24 24" stroke="#f5f7ff" fill="none" stroke-width="2" stroke-linecap="round">
+          <circle cx="11" cy="11" r="7"></circle>
+          <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+        </svg>
+      </a>
+    </div>
+  </nav>
+
+
+  <div class="app">
+
+    <!-- SEARCH BAR -->
+    <section class="search-page-hero">
+      <div class="search-page-bar glass">
+        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" stroke="#b8c0d8" fill="none" stroke-width="2" stroke-linecap="round">
+          <circle cx="11" cy="11" r="7"></circle>
+          <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+        </svg>
+
+        <input type="text" id="searchPageInput" placeholder="Search movies..." autofocus>
+      </div>
+    </section>
+
+
+    <!-- FILTERS -->
+    <section class="filters-row">
+      <select id="filterRating">
+        <option value="">Rating</option>
+        <option value="7">7+ ⭐</option>
+        <option value="8">8+ ⭐</option>
+        <option value="9">9+ ⭐</option>
+      </select>
+
+      <select id="filterYear">
+        <option value="">Year</option>
+      </select>
+
+      <select id="filterGenre">
+        <option value="">Genre</option>
+        <option value="action">Action</option>
+        <option value="comedy">Comedy</option>
+        <option value="horror">Horror</option>
+        <option value="romance">Romance</option>
+        <option value="scifi">Sci‑Fi</option>
+      </select>
+
+      <select id="filterSort">
+        <option value="">Sort</option>
+        <option value="popularity">Popularity</option>
+        <option value="rating">Rating</option>
+        <option value="year">Year</option>
+      </select>
+    </section>
+
+
+    <!-- TRENDING SEARCHES -->
+    <section>
+      <h2 class="section-title">Trending Searches</h2>
+      <div id="trendingChips" class="chips-row"></div>
+    </section>
+
+
+    <!-- RECENT SEARCHES -->
+    <section>
+      <h2 class="section-title">Recent Searches</h2>
+      <div id="recentSearches" class="chips-row"></div>
+      <button id="clearRecent" class="clear-btn">Clear</button>
+    </section>
+
+
+    <!-- RESULTS -->
+    <section>
+      <h2 class="section-title">Results</h2>
+      <div id="searchResults" class="results-grid"></div>
+      <div id="loadingSkeletons" class="skeleton-grid"></div>
+    </section>
+
+  </div>
+
+  <script src="search.js"></script>
+</body>
+</html>

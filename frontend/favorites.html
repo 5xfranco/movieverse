@@ -2,26 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Favorites</title>
+  <title>Favorites • MovieVerse</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
+  <!-- NAVBAR -->
   <nav class="navbar glass">
-  <div class="logo">MovieVerse</div>
+    <div class="logo">MovieVerse</div>
 
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="categories.html">Categories</a>
-    <a href="favorites.html" class="active">Favorites</a>
-  </div>
-</nav>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="categories.html">Categories</a>
+      <a href="favorites.html" class="active">Favorites</a>
+
+      <!-- SEARCH ICON (added) -->
+      <a href="search.html" class="search-icon-link">
+        <svg class="search-icon" width="22" height="22" viewBox="0 0 24 24" 
+             stroke="#f5f7ff" fill="none" stroke-width="2" stroke-linecap="round">
+          <circle cx="11" cy="11" r="7"></circle>
+          <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+        </svg>
+      </a>
+    </div>
+  </nav>
+
 
   <div class="app">
     <h1 class="section-title">Your Favorites</h1>
 
+    <!-- FAVORITES GRID -->
     <div id="favoritesGrid"></div>
+
+    <!-- EMPTY MESSAGE -->
     <p id="emptyMessage" style="display:none;">No favorites yet.</p>
   </div>
 
